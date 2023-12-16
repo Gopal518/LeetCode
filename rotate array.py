@@ -48,4 +48,41 @@ class Solution(object):
             result.append(i)
         nums = result 
         return nums
-        
+
+# in place array so that the space complexity improve from 0(n) to 0(1)
+class Solution(object):
+def rotate(self, nums, k):
+    """
+    :type nums: List[int]
+    :type k: int
+    :rtype: None Do not return anything, modify nums in-place instead.
+    """
+
+    if k > len(nums):
+        k = k%len(nums)
+    start = 0
+    end = len(nums)-k-1
+    while start < end:
+        temp = nums[start]
+        nums[start] = nums[end]
+        nums[end] = temp
+        start+=1
+        end-=1
+
+    start = len(nums)-k
+    end =  len(nums)-1
+    while start <end:
+        temp = nums[start]
+        nums[start] = nums[end]
+        nums[end] = temp
+        start+=1
+        end-=1
+
+    start = 0
+    end = len(nums)-1
+    while start < end:
+        temp = nums[start]
+        nums[start] = nums[end]
+        nums[end] = temp
+        start+=1
+        end-=1
