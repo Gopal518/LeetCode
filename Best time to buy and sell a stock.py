@@ -38,3 +38,21 @@ class Solution(object):
                     max = prices[j]-prices[i]
         
         return max
+    
+'''o(n) time complexity '''
+class Solution(object):
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        max = 0
+        p2 = 0
+        for p1 in range(1,len(prices)):
+            if prices[p1]-prices[p2] < 0:
+                p2 = p1
+            else:
+                if(prices[p1]-prices[p2] > max):
+                    max = prices[p1]-prices[p2]
+        
+        return max
