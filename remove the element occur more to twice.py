@@ -54,14 +54,19 @@ class Solution(object):
             while( p2<len(nums) and val == nums[p2]):
                 count+=1
                 p2+=1
+            
             if count<=1:
                 p1 = p2
                 p2+=1
+            elif(p2 == len(nums) and nums[p2-1]== val):
+                return len(nums)-shift-count + 1 
             else:
-                while(p2<len(nums)):
+                while(p2<len(nums)-shift):
                     nums[p2-count+1],nums[p2]= nums[p2],nums[p2-count+1]
                     p2+=1
                 p2 = p1 +1
                 shift = shift + count - 1
+            
         return (len(nums)-shift)
+        
         
