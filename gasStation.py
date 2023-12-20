@@ -40,36 +40,24 @@ n == gas.length == cost.length
 
 class Solution(object):
     def canCompleteCircuit(self, gas, cost):
-        """
-        :type gas: List[int]
-        :type cost: List[int]
-        :rtype: int
-        """
+        total_gas = 0
+        total_cost = 0
+        tank_status = 0
+        start_station_index = 0
 
-        for gasStation_i in range(len(gas)):
-            tankStatus = 0
-            count = 0
-            gasStation = gasStation_i
-            tankStatus = tankStatus + gas[gasStation]
-            gasStationPrev = gasStation
-            gasStation = gasStation +1
+        for i in range(len(gas)):
+            total_gas += gas[i]
+            total_cost += cost[i]
+            tank_status += gas[i] - cost[i]
 
-            while(count < len(gas) and tankStatus > 0 ):
-                if gasStation >= len(gas):
-                    gasStation = 0
-                if gasStationPrev <0:
-                    gasStationPrev = len(gas)-1
+            # If tank_status < 0, we can't reach the next station.
+            # So, reset the starting station to the next one.
+            if tank_status < 0:
+                tank_status = 0
+                start_station_index = i + 1
 
-                tankStatus = tankStatus -cost[gasStationPrev]
-                if(tankStatus <0):
-                    break
-                count+=1
-                tankStatus = tankStatus + gas[gasStation]
-                gasStationPrev = gasStation
-                gasStation = gasStation +1
+        # Check if the total gas is sufficient to cover the total cost.
+        if total_gas < total_cost:
+            return -1  # It's impossible to complete the circuit.
 
-
-
-            if count == len(gas):
-                return gasStation_i
-        return -1
+        return start_station_index if start_station_index < len(gas) else -1
