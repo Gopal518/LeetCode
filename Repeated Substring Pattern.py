@@ -68,7 +68,7 @@ class Solution(object):
 
         return True
     
-
+#with Time complexity O(N^2) and Space Complexity O(N)
     class Solution(object):
     def repeatedSubstringPattern(self, s):
         """
@@ -87,7 +87,7 @@ class Solution(object):
         return False
 
 
-
+#with Time complexity O(N) and Space Complexity O(N)
 class Solution(object):
     def repeatedSubstringPattern(self, s):
         """
