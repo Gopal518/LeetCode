@@ -44,4 +44,25 @@ class Solution(object):
             if value != result[i]:
                 return 0
         return 1
+
+class Solution(object):
+    def repeatedSubstringPattern(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        result = {}
+        if len(s) <= 1:
+            return 0
+        for i in s:
+            if i not in result:
+                result[i]=1
+            else:
+                result[i]+=1
+        value = result[i]  
+        for i in result.keys():
+            if value != result[i]:
+                return 0
+        return 1
+            
             
