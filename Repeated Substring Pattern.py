@@ -52,7 +52,8 @@ class Solution(object):
         :rtype: bool
         """
         mainString = ""
-
+        if len(s) <= 1:
+            return 0
         for i in s:
             if i not in mainString:
                 mainString += i
@@ -66,6 +67,7 @@ class Solution(object):
             curr += len(mainString)
 
         return True
+
 
             
             
