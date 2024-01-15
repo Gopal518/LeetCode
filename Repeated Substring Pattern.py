@@ -51,18 +51,21 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
-        result = {}
-        if len(s) <= 1:
-            return 0
+        mainString = ""
+
         for i in s:
-            if i not in result:
-                result[i]=1
+            if i not in mainString:
+                mainString += i
             else:
-                result[i]+=1
-        value = result[i]  
-        for i in result.keys():
-            if value != result[i]:
-                return 0
-        return 1
+                break
+
+        curr = 0
+        while curr < len(s):
+            if s[curr:curr+len(mainString)] != mainString:
+                return False
+            curr += len(mainString)
+
+        return True
+
             
             
