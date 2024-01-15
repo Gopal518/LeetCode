@@ -67,6 +67,25 @@ class Solution(object):
             curr += len(mainString)
 
         return True
+    
+
+    class Solution(object):
+    def repeatedSubstringPattern(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        if len(s) == 1:
+            return False
+
+        for i in range(1, len(s)//2 + 1):
+            print(s[:i],len(s)//i)
+            print("result", s[:i] * (len(s)//i) )
+            if s[:i] * (len(s)//i) == s:
+                return True
+
+        return False
+
 
 
             
