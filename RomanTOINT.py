@@ -41,3 +41,25 @@ Constraints:
 1 <= s.length <= 15
 s contains only the characters ('I', 'V', 'X', 'L', 'C', 'D', 'M').
 It is guaranteed that s is a valid roman numeral in the range [1, 3999].'''
+
+
+
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        dictRoman = {"I":1,"V":5,"X":10,"L":50,"C":100,"D":500,"M":1000}
+        value = 0
+        
+        for pos in reversed(range(len(s))):
+            if value == 0:
+                value = value + dictRoman[s[pos]]
+
+            else:
+                if dictRoman[s[pos]] >= dictRoman[s[pos+1]]:
+                    value = value + dictRoman[s[pos]]
+                else:
+                    value = value - dictRoman[s[pos]]
+
+            print(value)
+        return value
+
+
