@@ -49,7 +49,7 @@ class Solution:
         dictRoman = {"I":1,"V":5,"X":10,"L":50,"C":100,"D":500,"M":1000}
         value = 0
         
-        for pos in reversed(range(len(s))):
+        for pos in range(len(s)-1,-1,-1):
             if value == 0:
                 value = value + dictRoman[s[pos]]
 
@@ -61,5 +61,7 @@ class Solution:
 
             print(value)
         return value
+
+
 
 
