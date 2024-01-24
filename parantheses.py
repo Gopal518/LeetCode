@@ -26,3 +26,27 @@ Constraints:
 1 <= s.length <= 104
 s consists of parentheses only '()[]{}'.'''
 
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+        para_dict = {')':'(', ']':'[','}':'{'}
+        stack = []
+        for i in s:
+            if len(stack) ==0:
+                stack.append(i)
+            else:
+                if i == ')' or i == ']'or i == '}':
+                    if stack[-1] == para_dict[i]:
+                        stack.pop()
+                    else:
+                        stack.append(i)
+                else:
+                    stack.append(i)
+
+        if len(stack) == 0:
+            return 1
+        else:
+            return 0
+
+        
+        
