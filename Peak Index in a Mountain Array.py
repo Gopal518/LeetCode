@@ -30,3 +30,16 @@ Constraints:
 0 <= arr[i] <= 106
 arr is guaranteed to be a mountain array.'''
 
+
+
+### Time complexity O(N) and Space complexity O(1)
+class Solution:
+    def peakIndexInMountainArray(self, arr: List[int]) -> int:
+        index = 0
+        max_ = 0
+        for i,j in enumerate(arr):
+            if (max_ < j):
+                index = i
+                max_ = j
+        return index
+        
