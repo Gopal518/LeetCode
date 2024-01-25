@@ -51,4 +51,21 @@ class Solution:
         for i in range(len(arr)):
             if (arr[i]>arr[i+1]):
                 return i
+            
+### Time complexity O(log(N)) and Space complexity O(1) but at early exit 
+class Solution:
+    def peakIndexInMountainArray(self, arr: List[int]) -> int:
+        start = 0
+        end = len(arr)-1
+
+        while start <= end :
+            mid = (start + end )//2
+            if arr[mid] >= arr[mid-1] and arr[mid] >= arr[mid+1] :
+                return mid
+            elif arr[mid] > arr[mid-1]:
+                start = mid
+            else:
+                end = mid
+
+        
         
