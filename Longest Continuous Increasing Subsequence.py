@@ -25,3 +25,27 @@ Constraints:
 -109 <= nums[i] <= 109'''
 
 
+class Solution(object):
+    def findLengthOfLCIS(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        if len(nums)==1:
+            return 1
+        last = nums[0]
+        count = 1
+        global_count = 1
+        for i in range(1,len(nums)):
+            if nums[i]>last:
+                count = count + 1
+                global_count = max(global_count,count)
+                last = nums[i]
+
+            else:
+                last = nums[i]
+                count = 1
+
+        return global_count
+
+        
